@@ -1,0 +1,31 @@
+CREATE TABLE `users_booker` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `role` enum('user','admin'),
+  `status` boolean,
+  `email_to` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `rooms_booker` (
+    `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` varchar(200)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `events_booker` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `note` varchar(900) NOT NULL,
+  `start` TIME NOT NULL,
+  `end` TIME NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `create_date` DATE NOT NULL,
+  `recurent_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  FOREIGN KEY (user_id)  REFERENCES users_booker (id),
+  FOREIGN KEY (room_id)  REFERENCES rooms_booker (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `rooms_booker` (`name`) VALUES('Play room');
+INSERT INTO `rooms_booker` (`name`) VALUES('Conference room');
+INSERT INTO `rooms_booker` (`name`) VALUES('Meeting room');
