@@ -50,4 +50,14 @@ class CalendarController{
             return true;
         }
     }
+
+    public function getRooms()
+    {
+        $result = $this->model->getRooms();
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
