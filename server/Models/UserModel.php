@@ -14,7 +14,7 @@ class UserModel{
         $this->view = new View();
     }
 
-    public function postUserInfo()
+    /*public function postUserInfo()
     {
         $sqlEmailCheck = "SELECT id FROM users_booker WHERE email=?;";
         $parEmailCheck = array($_REQUEST['email']);
@@ -26,7 +26,7 @@ class UserModel{
             /*}else{
                 return 'Something went wrong. Please, try again!';
             } */
-        }elseif(!$sqlEmailCheckResult){
+       /* }elseif(!$sqlEmailCheckResult){
             $sql = "INSERT INTO users_booker (name, email, password, role, status, email_to) VALUES(?,?,?,?,?,?);";
             $par = array($_REQUEST['name'], $_REQUEST['email'], $_REQUEST['password'], 'user', true, 'mailto:'.$_REQUEST['email']);
             $sqlResult = $this->sql->makeQuery($sql, $par);
@@ -37,12 +37,16 @@ class UserModel{
                 return 'Something went wrong. Please, try again!';
             }        
         }
-    }
+    }*/
 
-    public function putUser()
+    public function postUser()
     {
-        $sql = "SELECT id, name FROM users_booker WHERE email=? AND password=?;";
-        $par = array($_REQUEST['email'],$_REQUEST['password']);
+        $arr = json_decode(file_get_contents('php://input'), true);
+        $sql = "SELECT id, name, role, status FROM users_booker WHERE email=? AND password=?;";
+        $par = array($arr['email'],$arr['password']);
+        //print_r(json_decode(file_get_contents('php://input'), true));
+        //print_r($_REQUEST);
+        
         $sqlResult = $this->sql->makeQuery($sql, $par);
         $result = $this->view->view($sqlResult);
         if($result){

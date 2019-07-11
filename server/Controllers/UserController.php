@@ -12,7 +12,7 @@ class UserController{
         $this->model = new UserModel();
     }
 
-    public function postUserInfo()
+    /*public function postUserInfo()
     {
         //echo $_REQUEST['name'];
         //var_dump($_REQUEST['name']);
@@ -22,11 +22,12 @@ class UserController{
         }else{
             return true;
         }
-    }
+    }*/
 
-    public function putUser($par)
+    public function postUser()
     {
-        $result = $this->model->putUser($par);
+        //print_r($par);
+        $result = $this->model->postUser();
         if(!$result){
             return false;
         }else{
