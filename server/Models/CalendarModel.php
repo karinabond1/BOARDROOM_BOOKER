@@ -184,7 +184,7 @@ class CalendarModel{
         }
         //var_dump($arr);
         if($arr[0]!="" && $arr[1]!="" && $arr[2]!="" &&  count($arr)==3){
-            $sql = "SELECT id, note, start, end, create_date FROM events_booker WHERE room_id=? AND MONTH(create_date)=? AND YEAR(create_date)=?;";
+            $sql = "SELECT id, note, start, end, create_date FROM events_booker WHERE room_id=? AND MONTH(create_date)=? AND YEAR(create_date)=? ORDER BY start;";
             $par = array($arr[0], $arr[1], $arr[2]);
             $sqlResult = $this->sql->makeQuery($sql, $par);
             //$result = $this->view->view($sqlResult);
