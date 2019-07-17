@@ -24,7 +24,7 @@ class Router{
     
     public function methodChoose()
     {
-        list( $u, $r, $ser, $a, $class, $meth, $par) = explode('/', $this->url, 7);
+        list($s, $u, $r, $ser, $a, $class, $meth, $par) = explode('/', $this->url, 8);
         //echo $class."...".$meth."...".$par;
         //echo $this->url;
         //echo $this->method;

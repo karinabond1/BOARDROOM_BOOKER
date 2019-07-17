@@ -20,7 +20,7 @@ CREATE TABLE `events_booker` (
   `end` TIME NOT NULL,
   `user_id` int(11) NOT NULL,
   `create_date` DATE NOT NULL,
-  `recurent_id` int(11),
+  `recurent_id` varchar(255),
   `room_id` int(11) NOT NULL,
   FOREIGN KEY (user_id)  REFERENCES users_booker (id),
   FOREIGN KEY (room_id)  REFERENCES rooms_booker (id)

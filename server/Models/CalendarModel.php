@@ -30,9 +30,10 @@ class CalendarModel{
             $parDataCheck = array($arr['create_date'], $arr['room_id']);
             $sqlDataCheckResult = $this->sql->makeQuery($sqlDataCheck, $parDataCheck);
             //var_dump($sqlDataCheckResul);
+            echo "dd";
             if($sqlDataCheckResult) { 
                 if(is_array($sqlDataCheckResult)){
-                    //var_dump($sqlEmailCheckResul);
+                    var_dump($sqlEmailCheckResul);
                     $index = '00:15:00';
                     foreach($sqlDataCheckResult as $value){
                         //echo $index;
@@ -112,9 +113,7 @@ class CalendarModel{
                         }*/
                     //}
                 }else{
-                    return $this->view->view($sqlDataCheckResult);
-                }                
-        }else{
+                    
             $sql = "INSERT INTO events_booker (note,start,end,user_id,create_date,recurent_id,room_id) VALUES(?,?,?,?,?,?,?);";
             $par = array($arr['note'], $arr['start'], $arr['end'], $arr['user_id'],$arr['create_date'], $arr['recurent_id'],$arr['room_id']);
             $sqlResult = $this->sql->makeQuery($sql, $par);
@@ -124,9 +123,11 @@ class CalendarModel{
             }else{
                 return $this->view->view('Something went wrong. Please, try again!');
             }        
-        }       
+        }   
+    }   
+} 
         
-    }
+    
 
     public function putEvent()
     {
