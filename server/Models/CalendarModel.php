@@ -16,11 +16,18 @@ class CalendarModel{
 
     public function postEvent()
     {
-        if($_REQUEST['note']!='' && $_REQUEST['start']!='' && $_REQUEST['end']!='' && $_REQUEST['user_id']!='' && $_REQUEST['create_date']!='' && $_REQUEST['recurent_id']!='' && $_REQUEST['room_id']!='' && $_REQUEST['start']<$_REQUEST['end']){
+        $arr = Array();
+        if(count($_REQUEST)==0){
+            $arr = json_decode(file_get_contents('php://input'), true);
+            //var_dump($arr);
+        }else{
+            $arr = $_REQUEST;
+        }
+        if($arr['note']!='' && $arr['start']!='' && $arr['end']!='' && $arr['user_id']!='' && $arr['create_date']!='' && $arr['recurent_id']!='' && $arr['room_id']!='' && $arr['start']<$arr['end']){
             //var_dump($_REQUEST);
             //echo $_REQUEST['create_date'];
             $sqlDataCheck = "SELECT start, end, create_date FROM events_booker WHERE create_date=? AND room_id=?;";
-            $parDataCheck = array($_REQUEST['create_date'], $_REQUEST['room_id']);
+            $parDataCheck = array($arr['create_date'], $arr['room_id']);
             $sqlDataCheckResult = $this->sql->makeQuery($sqlDataCheck, $parDataCheck);
             //var_dump($sqlDataCheckResul);
             if($sqlDataCheckResult) { 
@@ -32,19 +39,19 @@ class CalendarModel{
                         //var_dump($value);
                         //echo "value: ".$value['start'];
                         //echo " request: ".$_REQUEST['start'];
-                        if( ($value['start']==$_REQUEST['start'] && $value['end']==$_REQUEST['end']) || $value['start']===$_REQUEST['start'] || $value['end']===$_REQUEST['end']){
+                        if( ($value['start']==$arr['start'] && $value['end']==$arr['end']) || $value['start']===$arr['start'] || $value['end']===$arr['end']){
                             $this->view->view('There is the same event on this day. Please, change it!!');
-                        }elseif($_REQUEST['start']<$value['start'] && $_REQUEST['start']<$value['end'] && $_REQUEST['end']<$value['end'] && $_REQUEST['end']>$value['start']){
+                        }elseif($arr['start']<$value['start'] && $arr['start']<$value['end'] && $arr['end']<$value['end'] && $arr['end']>$value['start']){
                                 $this->view->view('There is the same event on this day. Please, change it!!');
-                        }elseif($_REQUEST['start']>$value['start'] && $_REQUEST['start']<$value['end'] && $_REQUEST['end']<$value['end'] && $_REQUEST['end']>$value['start']){
+                        }elseif($arr['start']>$value['start'] && $arr['start']<$value['end'] && $arr['end']<$value['end'] && $arr['end']>$value['start']){
                             $this->view->view('There is the same event on this day. Please, change it!!');
-                        }elseif($_REQUEST['start']>$value['start'] && $_REQUEST['start']<$value['end'] && $_REQUEST['end']>$value['end'] && $_REQUEST['end']>$value['start']){
+                        }elseif($arr['start']>$value['start'] && $arr['start']<$value['end'] && $arr['end']>$value['end'] && $arr['end']>$value['start']){
                             $this->view->view('There is the same event on this day. Please, change it!!');
-                        }elseif($_REQUEST['start']<$value['start'] && $_REQUEST['start']<$value['end'] && $_REQUEST['end']>$value['end'] && $_REQUEST['end']>$value['start']){
+                        }elseif($arr['start']<$value['start'] && $arr['start']<$value['end'] && $arr['end']>$value['end'] && $arr['end']>$value['start']){
                             $this->view->view('There is the same event on this day. Please, change it!!');
                         }else{
                             $sql = "INSERT INTO events_booker (note,start,end,user_id,create_date,recurent_id,room_id) VALUES(?,?,?,?,?,?,?);";
-                            $par = array($_REQUEST['note'], $_REQUEST['start'], $_REQUEST['end'], $_REQUEST['user_id'],$_REQUEST['create_date'], $_REQUEST['recurent_id'],$_REQUEST['room_id']);
+                            $par = array($arr['note'], $arr['start'], $arr['end'], $arr['user_id'],$arr['create_date'], $arr['recurent_id'],$arr['room_id']);
                             $sqlResult = $this->sql->makeQuery($sql, $par);
                             //$result = $this->view->view($sqlResult);
                             if($sqlResult){
@@ -107,9 +114,9 @@ class CalendarModel{
                 }else{
                     return $this->view->view($sqlDataCheckResult);
                 }                
-        }elseif(!$sqlDataCheckResult){
+        }else{
             $sql = "INSERT INTO events_booker (note,start,end,user_id,create_date,recurent_id,room_id) VALUES(?,?,?,?,?,?,?);";
-            $par = array($_REQUEST['note'], $_REQUEST['start'], $_REQUEST['end'], $_REQUEST['user_id'],$_REQUEST['create_date'], $_REQUEST['recurent_id'],$_REQUEST['room_id']);
+            $par = array($arr['note'], $arr['start'], $arr['end'], $arr['user_id'],$arr['create_date'], $arr['recurent_id'],$arr['room_id']);
             $sqlResult = $this->sql->makeQuery($sql, $par);
             //$result = $this->view->view($sqlResult);
             if($sqlResult){
@@ -181,6 +188,8 @@ class CalendarModel{
         //echo 'f';
         if (stristr($par, '/')) {
             $arr = explode('/', $par);
+        }else{
+            $arr[0] = $par;
         }
         //var_dump($arr);
         if($arr[0]!="" && $arr[1]!="" && $arr[2]!="" &&  count($arr)==3){

@@ -34,4 +34,14 @@ class UserController{
             return true;
         }
     }
+
+    public function getUserInfo($par){
+        $result = $this->model->getUserInfo($par);
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
 }

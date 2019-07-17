@@ -41,7 +41,12 @@ class UserModel{
 
     public function postUser()
     {
-        $arr = json_decode(file_get_contents('php://input'), true);
+        $arr = Array();
+        if(count($_REQUEST)==0){
+            $arr = json_decode(file_get_contents('php://input'), true);
+        }else{
+            $arr = $_REQUEST;
+        }
         $sql = "SELECT id, name, role, status FROM users_booker WHERE email=? AND password=?;";
         $par = array($arr['email'],$arr['password']);
         //print_r(json_decode(file_get_contents('php://input'), true));
@@ -53,6 +58,30 @@ class UserModel{
             return $result;
         }else{
             return 'Something went wrong. Please, try again!';
+        }
+    }
+
+    public function getUserInfo($par){
+        if (stristr($par, '/')) {
+            $arr = explode('/', $par);
+        }else{
+            $arr[0] = $par;
+        }
+        //var_dump($arr);
+        if($arr[0]!="" && count($arr)==1){
+            $sql = "SELECT email FROM users_booker WHERE id=?;";
+            $par = array($arr[0]);
+            $sqlResult = $this->sql->makeQuery($sql, $par);
+            //$result = $this->view->view($sqlResult);
+            if($sqlResult){
+                return $this->view->view($sqlResult);
+            }elseif(!$sqlResult){
+                return  $this->view->view('There is no such events!');
+            }else{
+                return  $this->view->view('Something went wrong. Please, try again!');
+            }
+        }else{
+            return $this->view->view('Something went wrong. Please, try again!!');
         }
     }
 
