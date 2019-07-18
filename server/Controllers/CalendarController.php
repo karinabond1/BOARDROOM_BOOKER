@@ -11,6 +11,16 @@ class CalendarController{
         $this->model = new CalendarModel();
     }
 
+    public function postCheckEvent()
+    {
+        $result = $this->model->postCheckEvent();
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     public function postEvent($par)
     {
         $result = $this->model->postEvent($par);
