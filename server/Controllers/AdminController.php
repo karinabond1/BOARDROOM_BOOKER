@@ -40,4 +40,14 @@ class AdminController{
             return true;
         }
     }
+
+    public function getAllUsers($par)
+    {
+        $result = $this->model->getAllUsers($par);
+        if(!$result){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
