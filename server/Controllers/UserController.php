@@ -24,10 +24,10 @@ class UserController{
         }
     }*/
 
-    public function postUser()
+    public function putUser()
     {
         //print_r($par);
-        $result = $this->model->postUser();
+        $result = $this->model->putUser();
         if(!$result){
             return false;
         }else{

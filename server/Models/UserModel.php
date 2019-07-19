@@ -39,7 +39,7 @@ class UserModel{
         }
     }*/
 
-    public function postUser()
+    public function putUser()
     {
         $arr = Array();
         if(count($_REQUEST)==0){
@@ -47,17 +47,18 @@ class UserModel{
         }else{
             $arr = $_REQUEST;
         }
+        //var_dump($_REQUEST);
         $sql = "SELECT id, name, role, status FROM users_booker WHERE email=? AND password=?;";
         $par = array($arr['email'],$arr['password']);
         //print_r(json_decode(file_get_contents('php://input'), true));
         //print_r($_REQUEST);
         
         $sqlResult = $this->sql->makeQuery($sql, $par);
-        $result = $this->view->view($sqlResult);
-        if($result){
-            return $result;
+        //$result = $this->view->view($sqlResult);
+        if($sqlResult){
+            return $this->view->view($sqlResult);
         }else{
-            return 'Something went wrong. Please, try again!';
+            return $this->view->view('Something went wrong. Please, try again!');
         }
     }
 
