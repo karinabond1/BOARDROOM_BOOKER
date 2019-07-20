@@ -8,40 +8,15 @@ class UserController{
 
     public function __construct()
     {
-        //var_dump($_REQUEST);
         $this->model = new UserModel();
     }
 
-    /*public function postUserInfo()
-    {
-        //echo $_REQUEST['name'];
-        //var_dump($_REQUEST['name']);
-        $result = $this->model->postUserInfo();
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
-    }*/
-
     public function putUser()
     {
-        //print_r($par);
-        $result = $this->model->putUser();
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->putUser() ? true : false;
     }
 
     public function getUserInfo($par){
-        $result = $this->model->getUserInfo($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
-
+        return $this->model->getUserInfo($par) ? true : false;
     }
 }

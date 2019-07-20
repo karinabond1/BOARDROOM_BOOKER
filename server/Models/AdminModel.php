@@ -3,7 +3,8 @@
 include_once('../../libs/Sql.php');
 include_once('../../Views/View.php');
 
-class AdminModel{
+class AdminModel
+{
 
     private $sql;
     private $view;
@@ -16,59 +17,91 @@ class AdminModel{
 
     public function postUserInfo()
     {
+        $arr = array();
+        if (count($_REQUEST) == 0) {
+            $arr = json_decode(file_get_contents('php://input'), true);
+        } else {
+            $arr = $_REQUEST;
+        }
         $sqlEmailCheck = "SELECT id FROM users_booker WHERE email=?;";
-        $parEmailCheck = array($_REQUEST['email']);
+        $parEmailCheck = array($arr['email']);
         $sqlEmailCheckResult = $this->sql->makeQuery($sqlEmailCheck, $parEmailCheck);
-        if($sqlEmailCheckResult) {    
-            return $resultEmailCheck = $this->view->view('There is the same email. Please, change it!');
-        }elseif(!$sqlEmailCheckResult){
+        if ($sqlEmailCheckResult) {
+            return $this->view->view('There is the same email. Please, change it!');
+        } elseif (!$sqlEmailCheckResult) {
             $sql = "INSERT INTO users_booker (name, email, password, role, status, email_to) VALUES(?,?,?,?,?,?);";
-            $par = array($_REQUEST['name'], $_REQUEST['email'], $_REQUEST['password'], 'user', true, 'mailto:'.$_REQUEST['email']);
+            $par = array($arr['name'], $arr['email'], $arr['password'], $arr['role'], true, 'mailto:' . $arr['email']);
             $sqlResult = $this->sql->makeQuery($sql, $par);
-            if($sqlResult){
-                return $this->view->view($sqlResult);
-            }else{
-                return $this->view->view('Something went wrong. Please, try again!');
-            }        
+            return $sqlResult ? $this->view->view('Ok!') : $this->view->view('Something went wrong. Please, try again!');
         }
     }
 
     public function putUser()
     {
-        $sql = "SELECT id, name FROM users_booker WHERE email=? AND password=?;";
-        $par = array($_REQUEST['email'],$_REQUEST['password']);
-        $sqlResult = $this->sql->makeQuery($sql, $par);
-        if($sqlResult){
-            return $this->view->view($sqlResult);
-        }else{
-            return $this->view->view('Something went wrong. Please, try again!');
+        $arr = array();
+        if (count($_REQUEST) == 0) {
+            $arr = json_decode(file_get_contents('php://input'), true);
+        } else {
+            $arr = $_REQUEST;
+        }
+        $sqlEmailCheck = "SELECT id FROM users_booker WHERE email=? AND id!=?;";
+        $parEmailCheck = array($arr['email'], $arr['id']);
+        $sqlEmailCheckResult = $this->sql->makeQuery($sqlEmailCheck, $parEmailCheck);
+        if ($sqlEmailCheckResult) {
+            return $this->view->view('There is the same email. Please, change it!');
+        } elseif (!$sqlEmailCheckResult) {
+            $sql = "UPDATE users_booker SET name=?, email=?, password=?,role=?,status=?,email_to=? WHERE id=?;";
+            $par = array($arr['name'], $arr['email'], $arr['password'], $arr['role'], $arr['status'], 'mailto:' . $arr['email'], $arr['id']);
+            $sqlResult = $this->sql->makeQuery($sql, $par);
+            return $sqlResult ? $this->view->view($sqlResult) : $this->view->view('Something went wrong. Please, try again!');
         }
     }
 
-    public function deleteUser()
+    public function deleteUser($id)
     {
-        $sql = "DELETE FROM users_booker WHERE id=?;";
-        $par = array($_REQUEST['id']);
+        $sqlEvents = "DELETE FROM events_booker where user_id=? AND create_date>?";
+        $parEvents = array($id, date("Y-m-d"));
+        $sqlResultEvents = $this->sql->makeQuery($sqlEvents, $parEvents);
+        $sql = "UPDATE users_booker SET status=? where id=?";
+        $par = array(0, $id);
         $sqlResult = $this->sql->makeQuery($sql, $par);
-        if($sqlResult){
-            return $this->view->view($sqlResult);
-        }else{
-            return $this->view->view('Something went wrong. Please, try again!');
-        }
+        return $sqlResult && $sqlResultEvents ? $this->view->view("Ok!") : $this->view->view('Something went wrong. Please, try again!');
+
     }
 
     public function getAllUsers()
     {
         $sql = "SELECT id, name, email, password, role, status, email_to FROM users_booker;";
         $sqlResult = $this->sql->makeQuery($sql, $par);
-        if($sqlResult){
+        if ($sqlResult) {
             return $this->view->view($sqlResult);
-        }elseif (!$sqlResult) {
+        } elseif (!$sqlResult) {
             return $this->view->view('There is no users!');
-        }else{
+        } else {
             return $this->view->view('Something went wrong. Please, try again!');
         }
     }
 
-    
+    public function getUserById($par)
+    {
+        if (stristr($par, '/')) {
+            $arr = explode('/', $par);
+        } else {
+            $arr[0] = $par;
+        }
+        if ($arr[0] != "" && count($arr) == 1) {
+            $sql = "SELECT id, name, email, password, role, status FROM users_booker WHERE id=?;";
+            $par = array($arr[0]);
+            $sqlResult = $this->sql->makeQuery($sql, $par);
+            if ($sqlResult) {
+                return $this->view->view($sqlResult);
+            } elseif (!$sqlResult) {
+                return  $this->view->view('There is no such events!');
+            } else {
+                return  $this->view->view('Something went wrong. Please, try again!');
+            }
+        } else {
+            return $this->view->view('Something went wrong. Please, try again!!');
+        }
+    }
 }

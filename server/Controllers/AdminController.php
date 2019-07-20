@@ -13,41 +13,26 @@ class AdminController{
 
     public function postUserInfo()
     {
-        $result = $this->model->postUserInfo();
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->postUserInfo() ? true : false;
     }
 
     public function putUser($par)
     {
-        $result = $this->model->putUser($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->putUser($par) ? true : false;
     }
 
     public function deleteUser($par)
     {
-        $result = $this->model->deleteUser($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->deleteUser($par) ? true : false;
     }
 
     public function getAllUsers($par)
     {
-        $result = $this->model->getAllUsers($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->getAllUsers($par) ? true : false;
+    }
+
+    public function getUserById($par)
+    {
+        return $this->model->getUserById($par) ? true : false;
     }
 }

@@ -13,61 +13,31 @@ class CalendarController{
 
     public function postCheckEvent()
     {
-        $result = $this->model->postCheckEvent();
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->postCheckEvent() ? true : false;
     }
 
     public function postEvent($par)
     {
-        $result = $this->model->postEvent($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->postEvent($par) ? true : false;
     }
 
     public function putEvent($par)
     {
-        $result = $this->model->putEvent($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->putEvent($par) ? true : false;
     }
 
     public function deleteEvent($par)
     {
-        $result = $this->model->deleteEvent($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->deleteEvent($par) ? true : false;
     }
 
     public function getEventsByMonth($par)
     {
-        $result = $this->model->getEventsByMonth($par);
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->getEventsByMonth($par) ? true : false;
     }
 
-    public function getRooms()
+    public function getRooms($par)
     {
-        $result = $this->model->getRooms();
-        if(!$result){
-            return false;
-        }else{
-            return true;
-        }
+        return $this->model->getRooms($par) ? true : false;
     }
 }

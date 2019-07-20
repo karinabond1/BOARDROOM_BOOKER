@@ -14,7 +14,6 @@ class Sql{
 
     public function makeQuery($sql, $par=false)
     {
-        //var_dump($par);
         $arr = array();
         $query = $this->mysql->prepare($sql);
         $result = $query->execute($par);
@@ -25,10 +24,8 @@ class Sql{
                 $querySelect->execute($par);
                 while ($row = $querySelect->fetch(PDO::FETCH_ASSOC)) {
                     $arr[$index] = $row;
-                    //var_dump($row); 
                     $index++;
                 }
-                //var_dump($arr);
                 if($arr){
                     return $arr;
                 }else{
