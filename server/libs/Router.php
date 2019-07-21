@@ -3,7 +3,6 @@
 include('../../Controllers/UserController.php');
 include('../../Controllers/CalendarController.php');
 include('../../Controllers/AdminController.php');
-include('../../Controllers/NotFoundController.php');
 include('../../config.php');
 
 class Router{

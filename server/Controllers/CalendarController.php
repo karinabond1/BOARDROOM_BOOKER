@@ -36,8 +36,8 @@ class CalendarController{
         return $this->model->getEventsByMonth($par) ? true : false;
     }
 
-    public function getRooms($par)
+    public function getRooms()
     {
-        return $this->model->getRooms($par) ? true : false;
+        return $this->model->getRooms() ? true : false;
     }
 }

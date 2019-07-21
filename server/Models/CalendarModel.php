@@ -302,7 +302,7 @@ class CalendarModel
         }
     }
 
-    public function getRooms($par)
+    public function getRooms()
     {
         $sql = "SELECT id, name FROM rooms_booker;";
         $sqlResult = $this->sql->makeQuery($sql, $par);
