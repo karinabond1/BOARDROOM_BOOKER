@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     {path: '', component: UserComponent},
     { path: 'calendar', component: CalendarComponent} ,
     { path: 'admin', component: AdminComponent },
-    { path: 'booker_form', component: BookerFormComponent },
+    { path: 'calendar/booker_form', component: BookerFormComponent },
     { path: '**', component: NotFoundComponent },
 ];
 
