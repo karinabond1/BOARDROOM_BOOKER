@@ -22,10 +22,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
-    {path: '/~user14/BOARDROOM_BOOKER/client/', component: UserComponent},
-    { path: '/~user14/BOARDROOM_BOOKER/client/calendar', component: CalendarComponent} ,
-    { path: '/~user14/BOARDROOM_BOOKER/client/admin', component: AdminComponent },
-    { path: '/~user14/BOARDROOM_BOOKER/client/calendar/booker_form', component: BookerFormComponent },
+    {path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/', component: UserComponent},
+    { path: 'calendar', component: CalendarComponent} ,
+    { path: 'admin', component: AdminComponent },
+    { path: 'booker_form', component: BookerFormComponent },
     { path: '/~user14/BOARDROOM_BOOKER/client/**', component: NotFoundComponent },
 ];
 
