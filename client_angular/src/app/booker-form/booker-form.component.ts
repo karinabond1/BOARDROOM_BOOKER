@@ -203,12 +203,12 @@ export class BookerFormComponent implements OnInit {
           } else {
             allDate = dateY.getFullYear() + "-" + (dateY.getMonth() + 1) + "-" + dateY.getDate();
           }
-          for (let i = 1; i <= this.form.value.numberWeeksBi; i++) {
+          for (let i = 0; i <= this.form.value.numberWeeksBi; i++) {
             arrAnswerCheck.push(await this.postCheckEvent(start, end, day2.format('YYYY-MM-DD'), allDate));
             day2 = day2.add('days', 14);
           }
           let bool = true;
-          for (let i = 1; i <= arrAnswerCheck.length; i++) {
+          for (let i = 0; i <= arrAnswerCheck.length; i++) {
             if (arrAnswerCheck[i] != 'yes') {
               bool = false;
             }
@@ -220,7 +220,7 @@ export class BookerFormComponent implements OnInit {
           if (bool) {
             let day_new =  moment(this.form.value.dateYMD);
             let day_new2 = day_new;
-            for (let i = 1; i <= this.form.value.numberWeeksBi; i++) {
+            for (let i = 0; i <= this.form.value.numberWeeksBi; i++) {
               this.postEvent(start, end, day_new2.format('YYYY-MM-DD'), allDate);
               day_new2 = day_new2.add('days', 14);
             }

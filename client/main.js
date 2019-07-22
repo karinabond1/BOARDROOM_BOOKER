@@ -963,7 +963,7 @@ var BookerFormComponent = /** @class */ (function () {
                         else {
                             allDate_1 = dateY_1.getFullYear() + "-" + (dateY_1.getMonth() + 1) + "-" + dateY_1.getDate();
                         }
-                        i = 1;
+                        i = 0;
                         _j.label = 14;
                     case 14:
                         if (!(i <= this.form.value.numberWeeksBi)) return [3 /*break*/, 17];
@@ -978,7 +978,7 @@ var BookerFormComponent = /** @class */ (function () {
                         return [3 /*break*/, 14];
                     case 17:
                         bool = true;
-                        for (i = 1; i <= arrAnswerCheck.length; i++) {
+                        for (i = 0; i <= arrAnswerCheck.length; i++) {
                             if (arrAnswerCheck[i] != 'yes') {
                                 bool = false;
                             }
@@ -990,7 +990,7 @@ var BookerFormComponent = /** @class */ (function () {
                         if (bool) {
                             day_new = moment__WEBPACK_IMPORTED_MODULE_7__(this.form.value.dateYMD);
                             day_new2 = day_new;
-                            for (i = 1; i <= this.form.value.numberWeeksBi; i++) {
+                            for (i = 0; i <= this.form.value.numberWeeksBi; i++) {
                                 this.postEvent(start, end, day_new2.format('YYYY-MM-DD'), allDate_1);
                                 day_new2 = day_new2.add('days', 14);
                             }
