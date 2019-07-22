@@ -210,7 +210,8 @@ export class BookerFormComponent implements OnInit {
           let bool = true;
           for (let i = 0; i <= arrAnswerCheck.length; i++) {
             console.log('for answeCheck');
-            if (arrAnswerCheck[i] != 'yes') {
+            console.log(arrAnswerCheck[i]);
+            if (arrAnswerCheck[i] != "yes") {
               console.log('answeCheck != yes');
               bool = false;
             }
