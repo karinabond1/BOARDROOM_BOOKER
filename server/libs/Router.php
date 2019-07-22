@@ -19,7 +19,7 @@ class Router{
     
     public function methodChoose()
     {
-        list( $u, $r, $ser, $a, $class, $meth, $par) = explode('/', $this->url, 7);
+        list($s, $u, $r, $ser, $a, $class, $meth, $par) = explode('/', $this->url, 8);
         switch ($this->method) {
             case 'GET':
                 $this->setMethod(ucfirst($class).'Controller', 'get' . ucfirst($meth), $par);
