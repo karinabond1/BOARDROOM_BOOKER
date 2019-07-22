@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "http://gfl:8070/BOARDROOM_BOOKER/",
+      "secure": false
+    }
+  }
