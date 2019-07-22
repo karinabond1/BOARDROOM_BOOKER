@@ -23,10 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
     {path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/', component: UserComponent},
-    { path: 'calendar', component: CalendarComponent} ,
-    { path: 'admin', component: AdminComponent },
-    { path: 'booker_form', component: BookerFormComponent },
-    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/~user14/BOARDROOM_BOOKER/client/**', component: NotFoundComponent },
+    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/calendar', component: CalendarComponent} ,
+    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/admin', component: AdminComponent },
+    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/booker_form', component: BookerFormComponent },
+    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/**', component: NotFoundComponent },
 ];
 
 @NgModule({
