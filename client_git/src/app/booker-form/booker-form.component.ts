@@ -203,12 +203,12 @@ export class BookerFormComponent implements OnInit {
           } else {
             allDate = dateY.getFullYear() + "-" + (dateY.getMonth() + 1) + "-" + dateY.getDate();
           }
-          for (let i = 0; i <= this.form.value.numberWeeksBi; i++) {
+          for (let i = 1; i <= this.form.value.numberWeeksBi; i++) {
             arrAnswerCheck.push(await this.postCheckEvent(start, end, day2.format('YYYY-MM-DD'), allDate));
             day2 = day2.add('days', 14);
           }
           let bool = true;
-          for (let i = 0; i < arrAnswerCheck.length; i++) {
+          for (let i = 1; i <= arrAnswerCheck.length; i++) {
             if (arrAnswerCheck[i] != 'yes') {
               bool = false;
             }
@@ -218,18 +218,19 @@ export class BookerFormComponent implements OnInit {
             }
           }
           if (bool) {
-            for (let i = 0; i <= this.form.value.numberWeeksBi; i++) {
-              this.postEvent(start, end, day2.format('YYYY-MM-DD'), allDate);
-              day2 = day2.add('days', 14);
+            let day_new =  moment(this.form.value.dateYMD);
+            for (let i = 1; i <= this.form.value.numberWeeksBi; i++) {
+              this.postEvent(start, end, day_new.format('YYYY-MM-DD'), allDate);
+              day_new = day_new.add('days', 14);
             }
           }
         }
       } else if (this.form.value.rec == "monthly") {
         let arrAnswerCheck = Array();
         let day1 = moment(this.form.value.dateYMD);
-        let day11 = day1;
-        arrAnswerCheck.push(await this.postCheckEvent(start, end, day1.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD')));
-        let day2 = day11.add('days', 31);
+        //let day11 = day1;
+        
+        let day2 = day1.add('days', 31);
         let bool = true;
         while (bool) {
           if (day2.format('ddd') == 'Sat' || day2.format('ddd') == 'Sun') {
@@ -238,10 +239,12 @@ export class BookerFormComponent implements OnInit {
             bool = false;
           }
         }
+        arrAnswerCheck.push(await this.postCheckEvent(start, end, day1.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD')));
         arrAnswerCheck.push(await this.postCheckEvent(start, end, day2.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD')));
+        let day_new = moment(this.form.value.dateYMD);
         if (arrAnswerCheck[0] == 'yes' && arrAnswerCheck[1] == 'yes') {
-          this.postEvent(start, end, day1.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD'));
-          this.postEvent(start, end, day2.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD'))
+          this.postEvent(start, end, day_new.format('YYYY-MM-DD'), day_new.format('YYYY-MM-DD'));
+          this.postEvent(start, end, day2.format('YYYY-MM-DD'), day_new.format('YYYY-MM-DD'))
         } else {
           this.answer = 'There is the same event on this day. Please, change it!';
         }

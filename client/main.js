@@ -817,7 +817,7 @@ var BookerFormComponent = /** @class */ (function () {
     };
     BookerFormComponent.prototype.book = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var startMin, endMin, startHou, endHou, start, end, dateYM, allDateYMD, month, dayYMD, rec, allDate, dateY, month, somesss, arrAnswerCheck, day, day2, i, _a, _b, bool, i, day3, i, arrAnswerCheck, dateY_1, day, day2, allDate_1, i, _c, _d, bool, i, i, arrAnswerCheck, day1, day11, _e, _f, day2, bool, _g, _h;
+            var startMin, endMin, startHou, endHou, start, end, dateYM, allDateYMD, month, dayYMD, rec, allDate, dateY, month, somesss, arrAnswerCheck, day, day2, i, _a, _b, bool, i, day3, i, arrAnswerCheck, dateY_1, day, day2, allDate_1, i, _c, _d, bool, i, day_new, i, arrAnswerCheck, day1, day2, bool, _e, _f, _g, _h, day_new;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_j) {
                 switch (_j.label) {
                     case 0:
@@ -963,7 +963,7 @@ var BookerFormComponent = /** @class */ (function () {
                         else {
                             allDate_1 = dateY_1.getFullYear() + "-" + (dateY_1.getMonth() + 1) + "-" + dateY_1.getDate();
                         }
-                        i = 0;
+                        i = 1;
                         _j.label = 14;
                     case 14:
                         if (!(i <= this.form.value.numberWeeksBi)) return [3 /*break*/, 17];
@@ -978,7 +978,7 @@ var BookerFormComponent = /** @class */ (function () {
                         return [3 /*break*/, 14];
                     case 17:
                         bool = true;
-                        for (i = 0; i < arrAnswerCheck.length; i++) {
+                        for (i = 1; i <= arrAnswerCheck.length; i++) {
                             if (arrAnswerCheck[i] != 'yes') {
                                 bool = false;
                             }
@@ -988,9 +988,10 @@ var BookerFormComponent = /** @class */ (function () {
                             }
                         }
                         if (bool) {
-                            for (i = 0; i <= this.form.value.numberWeeksBi; i++) {
-                                this.postEvent(start, end, day2.format('YYYY-MM-DD'), allDate_1);
-                                day2 = day2.add('days', 14);
+                            day_new = moment__WEBPACK_IMPORTED_MODULE_7__(this.form.value.dateYMD);
+                            for (i = 1; i <= this.form.value.numberWeeksBi; i++) {
+                                this.postEvent(start, end, day_new.format('YYYY-MM-DD'), allDate_1);
+                                day_new = day_new.add('days', 14);
                             }
                         }
                         _j.label = 18;
@@ -999,12 +1000,7 @@ var BookerFormComponent = /** @class */ (function () {
                         if (!(this.form.value.rec == "monthly")) return [3 /*break*/, 22];
                         arrAnswerCheck = Array();
                         day1 = moment__WEBPACK_IMPORTED_MODULE_7__(this.form.value.dateYMD);
-                        day11 = day1;
-                        _f = (_e = arrAnswerCheck).push;
-                        return [4 /*yield*/, this.postCheckEvent(start, end, day1.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD'))];
-                    case 20:
-                        _f.apply(_e, [_j.sent()]);
-                        day2 = day11.add('days', 31);
+                        day2 = day1.add('days', 31);
                         bool = true;
                         while (bool) {
                             if (day2.format('ddd') == 'Sat' || day2.format('ddd') == 'Sun') {
@@ -1014,13 +1010,18 @@ var BookerFormComponent = /** @class */ (function () {
                                 bool = false;
                             }
                         }
+                        _f = (_e = arrAnswerCheck).push;
+                        return [4 /*yield*/, this.postCheckEvent(start, end, day1.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD'))];
+                    case 20:
+                        _f.apply(_e, [_j.sent()]);
                         _h = (_g = arrAnswerCheck).push;
                         return [4 /*yield*/, this.postCheckEvent(start, end, day2.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD'))];
                     case 21:
                         _h.apply(_g, [_j.sent()]);
+                        day_new = moment__WEBPACK_IMPORTED_MODULE_7__(this.form.value.dateYMD);
                         if (arrAnswerCheck[0] == 'yes' && arrAnswerCheck[1] == 'yes') {
-                            this.postEvent(start, end, day1.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD'));
-                            this.postEvent(start, end, day2.format('YYYY-MM-DD'), day1.format('YYYY-MM-DD'));
+                            this.postEvent(start, end, day_new.format('YYYY-MM-DD'), day_new.format('YYYY-MM-DD'));
+                            this.postEvent(start, end, day2.format('YYYY-MM-DD'), day_new.format('YYYY-MM-DD'));
                         }
                         else {
                             this.answer = 'There is the same event on this day. Please, change it!';
