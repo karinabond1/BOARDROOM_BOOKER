@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     { path: 'calendar', component: CalendarComponent} ,
     { path: 'admin', component: AdminComponent },
     { path: 'booker_form', component: BookerFormComponent },
-    { path: '/~user14/BOARDROOM_BOOKER/client/**', component: NotFoundComponent },
+    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/~user14/BOARDROOM_BOOKER/client/**', component: NotFoundComponent },
 ];
 
 @NgModule({
