@@ -219,9 +219,10 @@ export class BookerFormComponent implements OnInit {
           }
           if (bool) {
             let day_new =  moment(this.form.value.dateYMD);
+            let day_new2 = day_new;
             for (let i = 1; i <= this.form.value.numberWeeksBi; i++) {
-              this.postEvent(start, end, day_new.format('YYYY-MM-DD'), allDate);
-              day_new = day_new.add('days', 14);
+              this.postEvent(start, end, day_new2.format('YYYY-MM-DD'), allDate);
+              day_new2 = day_new2.add('days', 14);
             }
           }
         }

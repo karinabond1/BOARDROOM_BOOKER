@@ -817,7 +817,7 @@ var BookerFormComponent = /** @class */ (function () {
     };
     BookerFormComponent.prototype.book = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var startMin, endMin, startHou, endHou, start, end, dateYM, allDateYMD, month, dayYMD, rec, allDate, dateY, month, somesss, arrAnswerCheck, day, day2, i, _a, _b, bool, i, day3, i, arrAnswerCheck, dateY_1, day, day2, allDate_1, i, _c, _d, bool, i, day_new, i, arrAnswerCheck, day1, day2, bool, _e, _f, _g, _h, day_new;
+            var startMin, endMin, startHou, endHou, start, end, dateYM, allDateYMD, month, dayYMD, rec, allDate, dateY, month, somesss, arrAnswerCheck, day, day2, i, _a, _b, bool, i, day3, i, arrAnswerCheck, dateY_1, day, day2, allDate_1, i, _c, _d, bool, i, day_new, day_new2, i, arrAnswerCheck, day1, day2, bool, _e, _f, _g, _h, day_new;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_j) {
                 switch (_j.label) {
                     case 0:
@@ -989,9 +989,10 @@ var BookerFormComponent = /** @class */ (function () {
                         }
                         if (bool) {
                             day_new = moment__WEBPACK_IMPORTED_MODULE_7__(this.form.value.dateYMD);
+                            day_new2 = day_new;
                             for (i = 1; i <= this.form.value.numberWeeksBi; i++) {
-                                this.postEvent(start, end, day_new.format('YYYY-MM-DD'), allDate_1);
-                                day_new = day_new.add('days', 14);
+                                this.postEvent(start, end, day_new2.format('YYYY-MM-DD'), allDate_1);
+                                day_new2 = day_new2.add('days', 14);
                             }
                         }
                         _j.label = 18;
