@@ -972,9 +972,9 @@ var BookerFormComponent = /** @class */ (function () {
                         return [3 /*break*/, 14];
                     case 17:
                         bool = true;
-                        for (i = 0; i <= arrAnswerCheck.length; i++) {
+                        for (i = 0; i < arrAnswerCheck.length; i++) {
                             console.log('for answeCheck');
-                            console.log(arrAnswerCheck[i]);
+                            console.log(arrAnswerCheck);
                             if (arrAnswerCheck[i] != "yes") {
                                 console.log('answeCheck != yes');
                                 bool = false;

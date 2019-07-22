@@ -208,9 +208,9 @@ export class BookerFormComponent implements OnInit {
             day2 = day2.add('days', 14);
           }
           let bool = true;
-          for (let i = 0; i <= arrAnswerCheck.length; i++) {
+          for (let i = 0; i < arrAnswerCheck.length; i++) {
             console.log('for answeCheck');
-            console.log(arrAnswerCheck[i]);
+            console.log(arrAnswerCheck);
             if (arrAnswerCheck[i] != "yes") {
               console.log('answeCheck != yes');
               bool = false;
