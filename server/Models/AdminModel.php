@@ -96,7 +96,7 @@ class AdminModel
             if ($sqlResult) {
                 return $this->view->view($sqlResult);
             } elseif (!$sqlResult) {
-                return  $this->view->view('There is no such events!');
+                return  $this->view->view('There is no such user!');
             } else {
                 return  $this->view->view('Something went wrong. Please, try again!');
             }
