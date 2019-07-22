@@ -639,9 +639,9 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_git\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-__webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_git\node_modules\ngx-bootstrap\datepicker\bs-datepicker.css */"./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css");
-module.exports = __webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_git\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_angular\node_modules\bootstrap\dist\css\bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_angular\node_modules\ngx-bootstrap\datepicker\bs-datepicker.css */"./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css");
+module.exports = __webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_angular\src\styles.css */"./src/styles.css");
 
 
 /***/ })

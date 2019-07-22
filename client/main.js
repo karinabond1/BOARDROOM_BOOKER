@@ -817,7 +817,7 @@ var BookerFormComponent = /** @class */ (function () {
     };
     BookerFormComponent.prototype.book = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var startMin, endMin, startHou, endHou, start, end, dateYM, allDateYMD, month, dayYMD, rec, allDate, dateY, month, somesss, arrAnswerCheck, day, day2, i, _a, _b, bool, i, day3, i, arrAnswerCheck, dateY_1, day, day2, allDate_1, i, _c, _d, bool, i, day_new, day_new2, i, arrAnswerCheck, day1, day2, bool, _e, _f, _g, _h, day_new;
+            var startMin, endMin, startHou, endHou, start, end, dateYM, allDateYMD, month, dayYMD, rec, allDate, dateY, month, somesss, arrAnswerCheck, day, day2, i, _a, _b, bool, i, day3, i, arrAnswerCheck, dateY_1, day, day2, i, _c, _d, bool, i, day_new, day_new2, i, arrAnswerCheck, day1, day2, bool, _e, _f, _g, _h, day_new;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_j) {
                 switch (_j.label) {
                     case 0:
@@ -957,18 +957,12 @@ var BookerFormComponent = /** @class */ (function () {
                         dateY_1 = this.form.value.dateYMD;
                         day = moment__WEBPACK_IMPORTED_MODULE_7__(this.form.value.dateYMD);
                         day2 = day;
-                        if (typeof (dateY_1) == 'string') {
-                            allDate_1 = dateY_1;
-                        }
-                        else {
-                            allDate_1 = dateY_1.getFullYear() + "-" + (dateY_1.getMonth() + 1) + "-" + dateY_1.getDate();
-                        }
                         i = 0;
                         _j.label = 14;
                     case 14:
                         if (!(i <= this.form.value.numberWeeksBi)) return [3 /*break*/, 17];
                         _d = (_c = arrAnswerCheck).push;
-                        return [4 /*yield*/, this.postCheckEvent(start, end, day2.format('YYYY-MM-DD'), allDate_1)];
+                        return [4 /*yield*/, this.postCheckEvent(start, end, day2.format('YYYY-MM-DD'), allDate)];
                     case 15:
                         _d.apply(_c, [_j.sent()]);
                         day2 = day2.add('days', 14);
@@ -979,19 +973,24 @@ var BookerFormComponent = /** @class */ (function () {
                     case 17:
                         bool = true;
                         for (i = 0; i <= arrAnswerCheck.length; i++) {
+                            console.log('for answeCheck');
                             if (arrAnswerCheck[i] != 'yes') {
+                                console.log('answeCheck != yes');
                                 bool = false;
                             }
                             if (!bool) {
+                                console.log('break');
                                 this.answer = arrAnswerCheck[i];
                                 break;
                             }
                         }
                         if (bool) {
+                            console.log('bool==true');
                             day_new = moment__WEBPACK_IMPORTED_MODULE_7__(this.form.value.dateYMD);
                             day_new2 = day_new;
                             for (i = 0; i <= this.form.value.numberWeeksBi; i++) {
-                                this.postEvent(start, end, day_new2.format('YYYY-MM-DD'), allDate_1);
+                                console.log('post event');
+                                this.postEvent(start, end, day_new2.format('YYYY-MM-DD'), allDate);
                                 day_new2 = day_new2.add('days', 14);
                             }
                         }
@@ -1824,7 +1823,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_git\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\student\Desktop\GFL\REST_CLI\BOARDROOM_BOOKER\client_angular\src\main.ts */"./src/main.ts");
 
 
 /***/ })

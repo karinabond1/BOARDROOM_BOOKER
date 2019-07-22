@@ -197,30 +197,35 @@ export class BookerFormComponent implements OnInit {
           let dateY = this.form.value.dateYMD;
           let day = moment(this.form.value.dateYMD);
           let day2 = day;
-          let allDate;
+          /*let allDate;
           if (typeof (dateY) == 'string') {
             allDate = dateY;
           } else {
             allDate = dateY.getFullYear() + "-" + (dateY.getMonth() + 1) + "-" + dateY.getDate();
-          }
+          }*/
           for (let i = 0; i <= this.form.value.numberWeeksBi; i++) {
             arrAnswerCheck.push(await this.postCheckEvent(start, end, day2.format('YYYY-MM-DD'), allDate));
             day2 = day2.add('days', 14);
           }
           let bool = true;
           for (let i = 0; i <= arrAnswerCheck.length; i++) {
+            console.log('for answeCheck');
             if (arrAnswerCheck[i] != 'yes') {
+              console.log('answeCheck != yes');
               bool = false;
             }
             if (!bool) {
+              console.log('break');
               this.answer = arrAnswerCheck[i];
               break;
             }
           }
           if (bool) {
+            console.log('bool==true');
             let day_new =  moment(this.form.value.dateYMD);
             let day_new2 = day_new;
             for (let i = 0; i <= this.form.value.numberWeeksBi; i++) {
+              console.log('post event');
               this.postEvent(start, end, day_new2.format('YYYY-MM-DD'), allDate);
               day_new2 = day_new2.add('days', 14);
             }
