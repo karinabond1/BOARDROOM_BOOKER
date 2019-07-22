@@ -664,11 +664,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var appRoutes = [
-    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/', component: _user_user_component__WEBPACK_IMPORTED_MODULE_10__["UserComponent"] },
-    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/calendar', component: _calendar_calendar_component__WEBPACK_IMPORTED_MODULE_11__["CalendarComponent"] },
-    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_14__["AdminComponent"] },
-    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/booker_form', component: _booker_form_booker_form_component__WEBPACK_IMPORTED_MODULE_16__["BookerFormComponent"] },
-    { path: 'http://192.168.0.15/~user14/BOARDROOM_BOOKER/client/**', component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_12__["NotFoundComponent"] },
+    { path: '', component: _user_user_component__WEBPACK_IMPORTED_MODULE_10__["UserComponent"] },
+    { path: 'calendar', component: _calendar_calendar_component__WEBPACK_IMPORTED_MODULE_11__["CalendarComponent"] },
+    { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_14__["AdminComponent"] },
+    { path: 'booker_form', component: _booker_form_booker_form_component__WEBPACK_IMPORTED_MODULE_16__["BookerFormComponent"] },
+    { path: '**', component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_12__["NotFoundComponent"] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
