@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b03e0f7-bd3d-4008-a24c-1a752c2e5bf9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BOARDROOM_BOOKER.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BOARDROOM_BOOKER.iml" afterDir="false" />
+    <list default="true" id="8b03e0f7-bd3d-4008-a24c-1a752c2e5bf9" name="Default" comment="home change for diploma">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_angular/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client_angular/src/app/calendar/calendar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/calendar/calendar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Models/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/AdminModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/Models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/api/admin/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/admin/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/api/calendar/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/calendar/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/api/user/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/user/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/libs/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/libs/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit tests/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/unit tests/composer.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +65,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="ts.external.directory.path" value="D:\OpenServer\domains\BOARDROOM_BOOKER\client_angular\node_modules\typescript\lib" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -91,18 +81,38 @@
       <workItem from="1563221189506" duration="5782000" />
       <workItem from="1563395683222" duration="19264000" />
       <workItem from="1590340154893" duration="8922000" />
-      <workItem from="1590864856495" duration="474000" />
+      <workItem from="1590864856495" duration="4217000" />
     </task>
+    <task id="LOCAL-00001" summary="home change for diploma">
+      <created>1590865557003</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590865557003</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="home change for diploma" />
+    <option name="LAST_COMMIT_MESSAGE" value="home change for diploma" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="606" y="114" key="CommitChangelistDialog2" timestamp="1590865550789">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="606" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590865550789" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590400155205">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590400155205" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590865560255">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590865560255" />
     <state x="656" y="252" width="1020" height="609" key="find.popup" timestamp="1590356321900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

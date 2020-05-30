@@ -19,9 +19,9 @@ class Router{
     
     public function methodChoose()
     {
-        //echo $this->url;
+
         list( /*$u,*/ $r, $ser, $a, $class, $meth, $par) = explode('/', $this->url, 6);
-        //echo/* $u.' / '.*/$r.' / '.$ser.' / '. $a . ' / '.$class.' / '.$meth;
+
         switch ($this->method) {
             case 'GET':
                 //echo $class;

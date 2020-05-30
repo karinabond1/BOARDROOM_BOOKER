@@ -25,6 +25,8 @@ class UserModel{
         $sql = "SELECT id, name, role_id, status FROM users_booker WHERE email=? AND password=?;";
         $par = array($arr['email'],$arr['password']);        
         $sqlResult = $this->sql->makeQuery($sql, $par);
+        $role = $this->getRole($sqlResult[0]['role_id']);
+        $sqlResult[0]['role'] = $role;
         if($sqlResult){
             return $this->view->view($sqlResult);
         }else{
@@ -37,9 +39,8 @@ class UserModel{
         $sql = "SELECT role FROM roles_booker WHERE id=?;";
         $par = array((int)$id);
         $sqlResult = $this->sql->makeQuery($sql, $par);
-        echo json_encode($sqlResult);
         if($sqlResult){
-            return json_encode($sqlResult);
+            return $sqlResult[0]['role'];
         }else{
             return $this->view->view('Something went wrong. Please, try again!');
         }
