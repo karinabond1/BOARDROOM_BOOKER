@@ -420,17 +420,17 @@ var AdminComponent = /** @class */ (function () {
         this.visibleChange.emit(this.visible);
     };
     AdminComponent.prototype.getAllUsers = function () {
-        return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/allUsers/')
+        return this.http.get('http://booker/server/api/admin/allUsers/')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     };
     AdminComponent.prototype.getUserById = function (id) {
-        return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/userById/' + id)
+        return this.http.get('http://booker/server/api/admin/userById/' + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     };
     AdminComponent.prototype.deleteUser = function (id) {
         var _this = this;
         this.answer = "";
-        this.http.delete('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/user/' + id)
+        this.http.delete('http://booker/server/api/admin/user/' + id)
             .subscribe(function (data) {
             _this.answer = data;
             _this.getAllUsers().subscribe(function (data) { return _this.allUsers = data; });
@@ -439,7 +439,7 @@ var AdminComponent = /** @class */ (function () {
     };
     AdminComponent.prototype.udateUsers = function (id, name, email, password, role, status) {
         var _this = this;
-        return this.http.put('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/user/', {
+        return this.http.put('http://booker/server/api/admin/user/', {
             'id': id,
             'name': name,
             'email': email,
@@ -457,7 +457,7 @@ var AdminComponent = /** @class */ (function () {
     };
     AdminComponent.prototype.postUser = function (name, email, password, role) {
         var _this = this;
-        this.http.post("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/userInfo/", {
+        this.http.post("http://booker/server/api/admin/userInfo/", {
             'name': name,
             'email': email,
             'password': password,
@@ -1043,7 +1043,7 @@ var BookerFormComponent = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.http.post("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/checkEvent/", {
+                        this.http.post("http://booker/server/api/calendar/checkEvent/", {
                             'note': this.form.value.note,
                             'start': start,
                             'end': end,
@@ -1078,7 +1078,7 @@ var BookerFormComponent = /** @class */ (function () {
     BookerFormComponent.prototype.postEvent = function (start, end, create_date, rec) {
         var _this = this;
         var answ;
-        this.http.post("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/event/", {
+        this.http.post("http://booker/server/api/calendar/event/", {
             'note': this.form.value.note,
             'start': start,
             'end': end,
@@ -1093,7 +1093,7 @@ var BookerFormComponent = /** @class */ (function () {
         });
     };
     BookerFormComponent.prototype.getUserInfo = function () {
-        return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/user/userInfo/' + localStorage.getItem('id'))
+        return this.http.get('http://booker/server/api/user/userInfo/' + localStorage.getItem('id'))
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     };
     BookerFormComponent.prototype.handleError = function (error) {
@@ -1140,7 +1140,7 @@ module.exports = ".all{\r\n    height: 100%;\r\n}\r\n.calendar-days{\r\n    widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"flex-container flex-center col-lg-3\">\r\n            <form (submit)=\"chooseRoom(form1)\" #form1=\"ngForm\">\r\n                <fieldset>\r\n                    <legend>Please select the room:</legend>\r\n                    <div class='form-group'>\r\n                        <div *ngFor='let room of rooms'>\r\n                            <input type=\"radio\" id=\"contactChoice'+{{room.id}}'\" ngModel name=\"roomm\" #roomm=\"ngModel\"\r\n                                value={{room.id}}>\r\n                            <label for=\"contactChoice'+{{room.id}}'\">{{room.name}}</label>\r\n                        </div>\r\n\r\n                    </div>\r\n                    <div>\r\n                        <button type=\"submit\" name=\"btnR\" class=\"btn btn-primary\">Choose room</button>\r\n                    </div>\r\n                </fieldset>\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"flex-container flex-center col-lg-9\" *ngIf=\"idRoom\">\r\n            <div id=\"calendar\" class=\"flex-container flex-column flex-center\">\r\n                <div class=\"height-20px\"></div>\r\n                <div class=\"flex-container flex-center-horz\">\r\n                    <div (click)='prevMonth()'><i class=\"fas fa-angle-double-left\"></i> </div>\r\n                    <div class=\"width-20px\"></div>\r\n                    <div>\r\n                        <h5>{{date.format('MMMM')}} {{date.format('YYYY')}}</h5>\r\n                    </div>\r\n                    <div class=\"width-20px\"></div>\r\n                    <div (click)='nextMonth()'><i class=\"fas fa-angle-double-right\"></i></div>\r\n                </div>\r\n                <div class=\"height-20px\"></div>\r\n                <div class=\"flex-container flex-center-horz\">\r\n                    <button class=\"btn btn-warning\" (click)='weekFromMon()'>Mon</button>\r\n                    <div class=\"width-20px\"></div>\r\n                    <button class=\"btn btn-warning\" (click)='weekFromSun()'>Sun</button>\r\n                </div>\r\n\r\n                <div class=\"flex-container \">\r\n                    <div *ngFor='let day of weekStart' class=\"week-days calendar-days flex-container flex-center\">\r\n                        {{day}}\r\n                    </div>\r\n                </div>\r\n                <div class=\"flex-container flex-wrap\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Book it\">\r\n                    <div *ngFor='let day of daysArr' routerLinkActive=\"active\" class=\"calendar-days\">\r\n                        <a routerLink=\"booker_form\" class=\"calendar-days__event-link\" (click)=\"selectedDate(day)\"\r\n                            [ngClass]=\"{'today':todayCheck(day), 'inactive':!weekendCheck(day)}\">\r\n                            <div class=\"flex-container\">\r\n                                <div class=\"day-number\">{{day?.date()}}</div>\r\n                            </div>\r\n                        </a>\r\n                        <div class=\"part\" *ngIf=\"events\">\r\n                            <div *ngFor='let event of events | keyvalue'>\r\n                                <div *ngIf='event'>\r\n                                    <div\r\n                                        *ngIf=\"event.value.create_date.slice(8)==day?.date() && event.value.create_date.slice(0,4)==day?.year() && event.value.create_date.slice(5).slice(0,2)==day?.month()+1\">\r\n                                        <button type=\"button\" class=\"btn btn-primary small-btn btn-xs\"\r\n                                            (click)=\"showDialog2 = !showDialog2\" (click)='showEventInfo(event.value)'>\r\n                                            {{event.value.start.slice(0,5)}} - {{event.value.end.slice(0,5)}}</button>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<app-dialog [(visible)]=\"showDialog2\">\r\n    <div class=\"container\">\r\n        <div class=\"row centered\">\r\n            <div class=\"col-lg-12 center\">\r\n                <h2>{{deleteAnswer}}</h2>\r\n                <h2>Details</h2>\r\n                <div [ngClass]=\"{'inactive':!eventLast}\">\r\n                    <form [formGroup]=\"form\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"exampleInputEmail1R\">{{email}}</label>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label for=\"exampleInputEmail1R\">{{eventCreatedDay}}</label>\r\n                        </div>\r\n                        <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleMode()\">12H / 24H</button>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"row\">\r\n                                <label for=\"exampleInputEmail1R\">Time start:</label>\r\n                                <timepicker formControlName=\"startTime\" [showMeridian]=\"ismeridian\" [minuteStep]=\"15\"\r\n                                    [min]=\"minTime\" [max]=\"maxTime\" required></timepicker>\r\n\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"row\">\r\n                                <label for=\"exampleInputEmail1R\">Time end:</label>\r\n                                <timepicker formControlName=\"endTime\" [minuteStep]=\"15\" [showMeridian]=\"ismeridian\"\r\n                                    [min]=\"minTime\" [max]=\"maxTime\" required>\r\n                                </timepicker>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"row\">\r\n                                <label for=\"exampleInputEmail1R\">Note:</label>\r\n                                <textarea class=\"form-control\" formControlName=\"note\"></textarea>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\" *ngIf='recurentEvent'>\r\n                            <div class=\"row\">\r\n                                <input formControlName=\"rec\" type=\"checkbox\" id=\"weekly\" name=\"rec\" value=\"weekly\">\r\n                                <label for=\"weekly\">Apply to all occurences?</label>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\" *ngIf='actionUser'>\r\n                            <div class=\"row\">\r\n                                <button (click)=\"update()\" type=\"submit\" name=\"btnUpdate\" class=\"btn btn-success\"\r\n                                    [disabled]=\"form.invalid\">Update</button>\r\n                                <button (click)=\"delete()\" type=\"submit\" name=\"btnDelete\" class=\"btn btn-danger margin-20px\"\r\n                                    [disabled]=\"form.invalid\">Delete</button>\r\n                            </div>\r\n                        </div>\r\n\r\n                    </form>\r\n\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n\r\n</app-dialog>"
+module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"flex-container flex-center col-lg-4\">\r\n            <form (submit)=\"chooseRoom(form1)\" #form1=\"ngForm\">\r\n                <fieldset>\r\n                    <legend>Please select the room:</legend>\r\n                    <div class='form-group'>\r\n                        <div *ngFor='let room of rooms'>\r\n                            <input type=\"radio\" id=\"contactChoice'+{{room.id}}'\" ngModel name=\"roomm\" #roomm=\"ngModel\"\r\n                                value={{room.id}}>\r\n                            <label for=\"contactChoice'+{{room.id}}'\">{{room.name}}</label>\r\n                        </div>\r\n\r\n                    </div>\r\n                    <div>\r\n                        <button type=\"submit\" name=\"btnR\" class=\"btn btn-primary\">Choose room</button>\r\n                    </div>\r\n                </fieldset>\r\n            </form>\r\n\r\n        </div>\r\n\r\n        <div class=\"flex-container flex-center col-lg-9\" *ngIf=\"idRoom\">\r\n            <div id=\"calendar\" class=\"flex-container flex-column flex-center\">\r\n                <div class=\"height-20px\"></div>\r\n                <div class=\"flex-container flex-center-horz\">\r\n                    <div (click)='prevMonth()'><i class=\"fas fa-angle-double-left\"></i> </div>\r\n                    <div class=\"width-20px\"></div>\r\n                    <div>\r\n                        <h5>{{date.format('MMMM')}} {{date.format('YYYY')}}</h5>\r\n                    </div>\r\n                    <div class=\"width-20px\"></div>\r\n                    <div (click)='nextMonth()'><i class=\"fas fa-angle-double-right\"></i></div>\r\n                </div>\r\n                <div class=\"height-20px\"></div>\r\n                <div class=\"flex-container flex-center-horz\">\r\n                    <button class=\"btn btn-warning\" (click)='weekFromMon()'>Mon</button>\r\n                    <div class=\"width-20px\"></div>\r\n                    <button class=\"btn btn-warning\" (click)='weekFromSun()'>Sun</button>\r\n                </div>\r\n\r\n                <div class=\"flex-container \">\r\n                    <div *ngFor='let day of weekStart' class=\"week-days calendar-days flex-container flex-center\">\r\n                        {{day}}\r\n                    </div>\r\n                </div>\r\n                <div class=\"flex-container flex-wrap\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Book it\">\r\n                    <div *ngFor='let day of daysArr' routerLinkActive=\"active\" class=\"calendar-days\">\r\n                        <a routerLink=\"booker_form\" class=\"calendar-days__event-link\" (click)=\"selectedDate(day)\"\r\n                            [ngClass]=\"{'today':todayCheck(day), 'inactive':!weekendCheck(day)}\">\r\n                            <div class=\"flex-container\">\r\n                                <div class=\"day-number\">{{day?.date()}}</div>\r\n                            </div>\r\n                        </a>\r\n                        <div class=\"part\" *ngIf=\"events\">\r\n                            <div *ngFor='let event of events | keyvalue'>\r\n                                <div *ngIf='event'>\r\n                                    <div\r\n                                        *ngIf=\"event.value.create_date.slice(8)==day?.date() && event.value.create_date.slice(0,4)==day?.year() && event.value.create_date.slice(5).slice(0,2)==day?.month()+1\">\r\n                                        <button type=\"button\" class=\"btn btn-primary small-btn btn-xs\"\r\n                                            (click)=\"showDialog2 = !showDialog2\" (click)='showEventInfo(event.value)'>\r\n                                            {{event.value.start.slice(0,5)}} - {{event.value.end.slice(0,5)}}</button>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<app-dialog [(visible)]=\"showDialog2\">\r\n    <div class=\"container\">\r\n        <div class=\"row centered\">\r\n            <div class=\"col-lg-12 center\">\r\n                <h2>{{deleteAnswer}}</h2>\r\n                <h2>Details</h2>\r\n                <div [ngClass]=\"{'inactive':!eventLast}\">\r\n                    <form [formGroup]=\"form\">\r\n                        <div class=\"form-group\">\r\n                            <label for=\"exampleInputEmail1R\">{{email}}</label>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label for=\"exampleInputEmail1R\">{{eventCreatedDay}}</label>\r\n                        </div>\r\n                        <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleMode()\">12H / 24H</button>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"row\">\r\n                                <label for=\"exampleInputEmail1R\">Time start:</label>\r\n                                <timepicker formControlName=\"startTime\" [showMeridian]=\"ismeridian\" [minuteStep]=\"15\"\r\n                                    [min]=\"minTime\" [max]=\"maxTime\" required></timepicker>\r\n\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"row\">\r\n                                <label for=\"exampleInputEmail1R\">Time end:</label>\r\n                                <timepicker formControlName=\"endTime\" [minuteStep]=\"15\" [showMeridian]=\"ismeridian\"\r\n                                    [min]=\"minTime\" [max]=\"maxTime\" required>\r\n                                </timepicker>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <div class=\"row\">\r\n                                <label for=\"exampleInputEmail1R\">Note:</label>\r\n                                <textarea class=\"form-control\" formControlName=\"note\"></textarea>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\" *ngIf='recurentEvent'>\r\n                            <div class=\"row\">\r\n                                <input formControlName=\"rec\" type=\"checkbox\" id=\"weekly\" name=\"rec\" value=\"weekly\">\r\n                                <label for=\"weekly\">Apply to all occurences?</label>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group\" *ngIf='actionUser'>\r\n                            <div class=\"row\">\r\n                                <button (click)=\"update()\" type=\"submit\" name=\"btnUpdate\" class=\"btn btn-success\"\r\n                                    [disabled]=\"form.invalid\">Update</button>\r\n                                <button (click)=\"delete()\" type=\"submit\" name=\"btnDelete\" class=\"btn btn-danger margin-20px\"\r\n                                    [disabled]=\"form.invalid\">Delete</button>\r\n                            </div>\r\n                        </div>\r\n\r\n                    </form>\r\n\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n\r\n</app-dialog>"
 
 /***/ }),
 
@@ -1347,7 +1347,7 @@ var CalendarComponent = /** @class */ (function () {
         if (this.form.value.rec === true) {
             rec = '+';
         }
-        this.http.put("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/event/", {
+        this.http.put("http://booker/server/api/calendar/event/", {
             start: start,
             end: end,
             note: this.form.value.note,
@@ -1373,7 +1373,7 @@ var CalendarComponent = /** @class */ (function () {
         if (this.form.value.rec === true) {
             rec = '+';
         }
-        this.http.delete("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/event/" + localStorage.getItem('event_id') + "/" + rec)
+        this.http.delete("http://booker/server/api/calendar/event/" + localStorage.getItem('event_id') + "/" + rec)
             .subscribe(function (data) {
             if (data === 'Ok!') {
                 _this.getEvents(_this.idRoom, _this.month, _this.year).subscribe(function (data) {
@@ -1386,15 +1386,15 @@ var CalendarComponent = /** @class */ (function () {
         });
     };
     CalendarComponent.prototype.getUserInfo = function (id) {
-        return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/user/userInfo/' + id)
+        return this.http.get('http://booker/server/api/user/userInfo/' + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     };
     CalendarComponent.prototype.getRooms = function () {
-        return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/rooms/')
+        return this.http.get('http://booker/server/api/calendar/rooms/')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     };
     CalendarComponent.prototype.getEvents = function (roomId, month, year) {
-        return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/eventsByMonth/' + roomId + '/' + month + '/' + year)
+        return this.http.get('http://booker/server/api/calendar/eventsByMonth/' + roomId + '/' + month + '/' + year)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     };
     CalendarComponent.prototype.handleError = function (error) {
@@ -1703,7 +1703,7 @@ var UserComponent = /** @class */ (function () {
     };
     UserComponent.prototype.onSubmitLog = function (e) {
         var _this = this;
-        this.http.put("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/user/user/", {
+        this.http.put("http://booker/server/api/user/user/", {
             "email": e.value.email,
             "password": e.value.password
         })

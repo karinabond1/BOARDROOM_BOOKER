@@ -22,11 +22,24 @@ class UserModel{
         }else{
             $arr = $_REQUEST;
         }
-        $sql = "SELECT id, name, role, status FROM users_booker WHERE email=? AND password=?;";
+        $sql = "SELECT id, name, role_id, status FROM users_booker WHERE email=? AND password=?;";
         $par = array($arr['email'],$arr['password']);        
         $sqlResult = $this->sql->makeQuery($sql, $par);
         if($sqlResult){
             return $this->view->view($sqlResult);
+        }else{
+            return $this->view->view('Something went wrong. Please, try again!');
+        }
+    }
+
+    public function getRole($id)
+    {
+        $sql = "SELECT role FROM roles_booker WHERE id=?;";
+        $par = array((int)$id);
+        $sqlResult = $this->sql->makeQuery($sql, $par);
+        echo json_encode($sqlResult);
+        if($sqlResult){
+            return json_encode($sqlResult);
         }else{
             return $this->view->view('Something went wrong. Please, try again!');
         }
