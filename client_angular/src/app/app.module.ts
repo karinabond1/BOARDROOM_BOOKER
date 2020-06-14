@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import {removeNgStyles, createNewHosts, createInputTransfer} from '@angularclass/hmr';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 import {AppRoutingModule} from './app-routing.module';
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
         BsDropdownModule.forRoot(),
         CollapseModule.forRoot(),
         BrowserModule,
+        GoogleChartsModule,
         AppRoutingModule,
         RouterModule.forRoot(appRoutes),
         RoutingModule,

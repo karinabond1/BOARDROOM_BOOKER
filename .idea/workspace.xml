@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b03e0f7-bd3d-4008-a24c-1a752c2e5bf9" name="Default" comment="home change for diploma">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/karina.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/Models/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/AdminModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/proxy.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/proxy.conf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/admin/admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/admin/admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/admin/admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/booker-form/booker-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/booker-form/booker-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/calendar/calendar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/calendar/calendar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/app/user/user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/app/user/user.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_angular/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client_angular/src/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/Models/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/Models/UserModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/libs/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/libs/Router.php" afterDir="false" />
     </list>
@@ -82,6 +94,8 @@
       <workItem from="1563395683222" duration="19264000" />
       <workItem from="1590340154893" duration="8922000" />
       <workItem from="1590864856495" duration="4217000" />
+      <workItem from="1590992025168" duration="35000" />
+      <workItem from="1592052144692" duration="5759000" />
     </task>
     <task id="LOCAL-00001" summary="home change for diploma">
       <created>1590865557003</created>
@@ -101,22 +115,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="home change for diploma" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Inspections" timestamp="1592053760452">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1592053760452" />
     <state x="606" y="114" key="CommitChangelistDialog2" timestamp="1590865550789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="606" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590865550789" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590400155205">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590992057551">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590400155205" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590992057551" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1590865560255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590865560255" />
-    <state x="656" y="252" width="1020" height="609" key="find.popup" timestamp="1590356321900">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590992031381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="252" width="1020" height="609" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590356321900" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590992031381" />
+    <state x="656" y="252" width="1020" height="609" key="find.popup" timestamp="1592053685006">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="252" width="1020" height="609" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592053685006" />
   </component>
   <component name="masterDetails">
     <states>

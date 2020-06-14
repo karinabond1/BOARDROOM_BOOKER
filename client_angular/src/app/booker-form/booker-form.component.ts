@@ -236,7 +236,7 @@ export class BookerFormComponent implements OnInit {
         let arrAnswerCheck = Array();
         let day1 = moment(this.form.value.dateYMD);
         //let day11 = day1;
-        
+
         let day2 = day1.add('days', 31);
         let bool = true;
         while (bool) {
@@ -265,7 +265,7 @@ export class BookerFormComponent implements OnInit {
 
   async postCheckEvent(start, end, create_date, rec) {
     let bool;
-    this.http.post("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/checkEvent/",
+    this.http.post("http://booker/server/api/calendar/checkEvent/",
       {
         'note': this.form.value.note,
         'start': start,
@@ -301,7 +301,7 @@ export class BookerFormComponent implements OnInit {
 
   private postEvent(start, end, create_date, rec) {
     let answ;
-    this.http.post("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/calendar/event/",
+    this.http.post("http://booker/server/api/calendar/event/",
       {
         'note': this.form.value.note,
         'start': start,
@@ -320,7 +320,7 @@ export class BookerFormComponent implements OnInit {
   }
 
   public getUserInfo() {
-    return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/user/userInfo/' + localStorage.getItem('id'))
+    return this.http.get('http://booker/server/api/user/userInfo/' + localStorage.getItem('id'))
       .pipe(
         catchError(this.handleError)
       );

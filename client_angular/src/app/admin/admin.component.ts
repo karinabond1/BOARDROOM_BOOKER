@@ -45,7 +45,38 @@ export class AdminComponent implements OnInit {
     role: new FormControl(),
     status: new FormControl()
   });
+/*
 
+  data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Work',     11],
+    ['Eat',      2],
+    ['Commute',  2],
+    ['Watch TV', 2],
+    ['Sleep',    7]
+  ]);
+
+  options = {
+    title: 'My Daily Activities'
+  };
+
+  chart = new google.visualization.PieChart(document.getElementById('piechart')).draw(this.data, this.options);
+*/
+
+  title = 'Days Fill Analysis';
+  type_chart = 'PieChart';
+  data = [
+    ['Monday', 15],
+    ['Tuesday', 26],
+    ['Wednesday', 28.7],
+    ['Thursday', 19.5],
+    ['Friday', 10.8]
+  ];
+  columnNames = ['Browser', 'Percentage'];
+  options = {
+  };
+  width = 550;
+  height = 400;
 
   ngOnInit() {
     this.answer = "";
@@ -93,7 +124,7 @@ export class AdminComponent implements OnInit {
       }
       this.form.setValue({ name: data[0].name, email: data[0].email, password: data[0].password, role: data[0].role, status: status});
     });
-    
+
   }
 
   public noDelete()
@@ -103,24 +134,24 @@ export class AdminComponent implements OnInit {
   }
 
   private getAllUsers() {
-    return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/allUsers/')
+    return this.http.get('http://booker/server/api/admin/allUsers/')
       .pipe(
         catchError(this.handleError)
       );
   }
 
   private getUserById(id) {
-    return this.http.get('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/userById/'+id)
+    return this.http.get('http://booker/server/api/admin/userById/'+id)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  
+
 
   private deleteUser(id) {
     this.answer="";
-    this.http.delete('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/user/' + id)
+    this.http.delete('http://booker/server/api/admin/user/' + id)
       .subscribe(
         data => {
           this.answer = data;
@@ -131,7 +162,7 @@ export class AdminComponent implements OnInit {
   }
 
   private udateUsers(id,name,email,password,role,status) {
-    return this.http.put('http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/user/',
+    return this.http.put('http://booker/server/api/admin/user/',
     {
       'id': id,
       'name': name,
@@ -146,14 +177,14 @@ export class AdminComponent implements OnInit {
           if(data=='Ok!'){
             this.getAllUsers().subscribe(data => this.allUsers = data);
           }
-          
+
         },
         error => {
         })
   }
 
   private postUser(name, email, password, role) {
-    this.http.post("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/admin/userInfo/",
+    this.http.post("http://booker/server/api/admin/userInfo/",
       {
         'name': name,
         'email': email,
@@ -166,7 +197,7 @@ export class AdminComponent implements OnInit {
           if(data=='Ok!'){
             this.getAllUsers().subscribe(data => this.allUsers = data);
           }
-          
+
         },
         error => {
         })

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { User } from './user.module';
-import { catchError } from 'rxjs/operators'; 
+import { catchError } from 'rxjs/operators';
 import { throwError } from "rxjs";
 
 
@@ -29,7 +29,7 @@ export class UserComponent implements OnInit{
 
     constructor( private http: HttpClient){}
 
-    
+
     onSubmitLogOut(){
         localStorage.removeItem('id');
         localStorage.removeItem('name');
@@ -40,7 +40,7 @@ export class UserComponent implements OnInit{
     }
 
     onSubmitLog(e) {
-        this.http.put("http://192.168.0.15/~user14/BOARDROOM_BOOKER/server/api/user/user/",
+        this.http.put("http://booker/server/api/user/user/",
             {
         "email":  e.value.email,
         "password":  e.value.password
@@ -60,19 +60,19 @@ export class UserComponent implements OnInit{
                     e.value.password='';
                     this.error = "Email and/or password is incorrect!";
                 }
-                
+
             },
             error  => {
             }
 
         );
     }
-    
+
 
     ngOnInit(){
-        
+
     }
-  
+
 
 }
 

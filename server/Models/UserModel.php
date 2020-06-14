@@ -27,7 +27,7 @@ class UserModel{
         $sqlResult = $this->sql->makeQuery($sql, $par);
         $role = $this->getRole($sqlResult[0]['role_id']);
         $sqlResult[0]['role'] = $role;
-        if($sqlResult){
+        if($sqlResult && $role){
             return $this->view->view($sqlResult);
         }else{
             return $this->view->view('Something went wrong. Please, try again!');

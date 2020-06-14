@@ -20,11 +20,10 @@ class Router{
     public function methodChoose()
     {
 
-        list( /*$u,*/ $r, $ser, $a, $class, $meth, $par) = explode('/', $this->url, 6);
+        list( $r, $ser, $a, $class, $meth, $par) = explode('/', $this->url, 6);
 
         switch ($this->method) {
             case 'GET':
-                //echo $class;
                 $this->setMethod(ucfirst($class).'Controller', 'get' . ucfirst($meth), $par);
                 break;
             case 'DELETE':
@@ -43,7 +42,6 @@ class Router{
 
     private function setMethod($class, $method, $par = false)
     {
-        //echo $class.' '.$method;
         $obj = new $class;
         if (method_exists($obj, $method)) {
             call_user_func([$obj, $method], $par);
